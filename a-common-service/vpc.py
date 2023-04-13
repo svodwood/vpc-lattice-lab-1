@@ -138,25 +138,6 @@ for i in range(2):
         )
     )
 
-    # shared_service_eip = ec2.Eip(f"NateEip-{prefix}",
-    #     tags={**general_tags, "Name": f"NateIpEip-{prefix}"},
-    #     opts=ResourceOptions(
-    #         parent=shared_services_main_vpc
-    #     )
-    # )
-
-    # shared_service_nat_gateway = ec2.NatGateway(f"NatGateway-{prefix}",
-    #     allocation_id=shared_service_eip.id,
-    #     subnet_id=demo_public_subnet.id,
-    #     tags={**general_tags, "Name": f"NatGateway-{prefix}"},
-    #     opts=ResourceOptions(
-    #         depends_on=[
-    #             shared_services_main_vpc,
-    #             shared_service_eip
-    #         ]
-    #     )
-    # )
-
     shared_service_subnet_app = ec2.Subnet(f"SharedServiceSubnetApp-{prefix}",
         vpc_id=shared_services_main_vpc.id,
         cidr_block=shared_service_subnet_cidrs_app[i],
@@ -178,15 +159,6 @@ for i in range(2):
         subnet_id=shared_service_subnet_app.id,
         opts=ResourceOptions(parent=shared_service_subnet_app)
     )
-
-    # shared_service_app_route_to_wan = ec2.Route(f"WanAppRoute-{prefix}",
-    #     route_table_id=shared_service_rt_app.id,
-    #     nat_gateway_id=shared_service_nat_gateway.id,
-    #     destination_cidr_block="0.0.0.0/0",
-    #     opts=ResourceOptions(
-    #         parent=shared_service_rt_app
-    #     )
-    # )
 
     shared_service_route_to_green = ec2.Route(f"RouteToGreenPeer-{prefix}",
         route_table_id=shared_service_rt_app.id,
