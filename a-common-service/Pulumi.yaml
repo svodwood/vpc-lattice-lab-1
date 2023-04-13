@@ -4,3 +4,20 @@ runtime:
   options:
     virtualenv: venv
 description: A minimal AWS Python Pulumi program
+template:
+  config:
+    aws-native:region:
+      description: AWS Native provider region, needs Lattice support
+      default: us-east-1
+    aws:region: 
+      description: AWS provider region, needs Lattice support - same as above
+      default: us-east-1
+    aws-native:profile:
+      description: AWS Native profile name
+    aws:profile:
+      description: AWS profile name, same as above
+    blue-principal:
+      description: AWS account ID for the blue-service
+    green-principal:
+      description: AWS account ID for the green-service
+
