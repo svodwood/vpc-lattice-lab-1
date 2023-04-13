@@ -55,3 +55,5 @@ green_sandbox_subnet_cidrs_app = [
     "10.200.128.0/18",
     "10.200.192.0/18"
 ]
+
+shared_service_fqdn = stack_config.require("shared-service-fqdn")

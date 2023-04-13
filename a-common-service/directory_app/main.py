@@ -4,12 +4,8 @@ from mangum import Mangum
 # Initialise the app
 app = FastAPI()
 
-@app.get("/green-team")
-async def go_green():
-    return {'endpoint': 'green'}
-
-@app.get("/blue-team")
-async def go_blue():
-    return {'endpoint': 'blue'}
+@app.get("/")
+async def root(q: str):
+    return {"endpoint": f"{q}"}
 
 lambda_handler = Mangum(app)

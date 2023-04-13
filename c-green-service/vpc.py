@@ -112,7 +112,6 @@ green_service_network_vpc_association = vpclattice.ServiceNetworkVpcAssociation(
     security_group_ids=[green_lattice_sg.id],
     service_network_identifier=green_lattice_network_arn,
     vpc_identifier=green_sandbox_vpc,
-    tags=baseline_cost_tags_native,
     opts=ResourceOptions(
         depends_on=[
             green_sandbox_vpc

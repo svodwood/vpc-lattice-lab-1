@@ -112,7 +112,6 @@ blue_service_network_vpc_association = vpclattice.ServiceNetworkVpcAssociation("
     security_group_ids=[blue_lattice_sg.id],
     service_network_identifier=blue_lattice_network_arn,
     vpc_identifier=blue_sandbox_vpc,
-    tags=baseline_cost_tags_native,
     opts=ResourceOptions(
         depends_on=[
             blue_sandbox_vpc

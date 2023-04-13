@@ -55,3 +55,5 @@ blue_sandbox_subnet_cidrs_app = [
     "10.100.128.0/18",
     "10.100.192.0/18"
 ]
+
+shared_service_fqdn = stack_config.require("shared-service-fqdn")

@@ -1,6 +1,6 @@
 from pulumi_aws_native import vpclattice
 from pulumi_aws import ram
-from pulumi import ResourceOptions
+from pulumi import ResourceOptions, export
 
 from settings import baseline_cost_tags, deployment_region, baseline_cost_tags_native, green_principal, blue_principal
 from vpc import green_network_vpc, blue_network_vpc, green_lattice_sg, blue_lattice_sg
@@ -40,11 +40,15 @@ green_service_network = vpclattice.ServiceNetwork("GreenServiceNetwork",
     tags=baseline_cost_tags_native
 )
 
+export("green-service-network-arn", green_service_network.arn)
+
 blue_service_network = vpclattice.ServiceNetwork("BlueServiceNetwork",
     auth_type="NONE",
     name="blue-service-network",
     tags=baseline_cost_tags_native
 )
+
+export("blue-service-network-arn", blue_service_network.arn)
 
 """
 Adds service networks to respective RAM shares:

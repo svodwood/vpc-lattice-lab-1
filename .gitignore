@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Pulumi
-pulumi.main.yaml
+Pulumi.main.yaml
